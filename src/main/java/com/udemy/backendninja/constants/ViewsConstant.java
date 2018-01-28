@@ -6,4 +6,5 @@ public class ViewsConstant {
 	public static String EXAMPLE02 = "example02";
 	public static String EXAMPLE03 = "example03";
 	public static String EXAMPLE04 = "example04";
+	public static String EXAMPLE05 = "example05";
 }
