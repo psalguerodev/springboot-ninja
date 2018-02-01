@@ -1,7 +1,5 @@
 package com.udemy.backendninja.controller;
 
-import java.util.ArrayList;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,25 +16,22 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.udemy.backendninja.component.ExampleComponent;
 import com.udemy.backendninja.constants.ViewsConstant;
 import com.udemy.backendninja.model.Person;
+import com.udemy.backendninja.service.ExampleService;
 
 @Controller
 @RequestMapping("/example05")
 public class Example05Controller {
-
+	
 	@Autowired
 	@Qualifier("exampleComponent")
 	private ExampleComponent exampleComponent;
 	
-	public static final Log LOGGER = LogFactory.getLog(Example05Controller.class);
+	@Autowired
+	@Qualifier("exampleService")
+	private ExampleService exampleService;
 	
 	private Person objPerson = new Person("Bill","Gates",32);
-	private ArrayList<Person> listPerson = new ArrayList<>(3);
-	
-	public Example05Controller() {
-		this.listPerson.add(new Person("Patrick", "Salguero", 22 ));
-		this.listPerson.add(new Person("Cesar", "Salguero", 24));
-		this.listPerson.add(new Person("Raquel", "Avalos", 24));
-	}
+	public static final Log LOGGER = LogFactory.getLog(Example05Controller.class);
 	
 	/* ======================[ RETURN STRING VIEW ]================================ */
 	@GetMapping("/")
@@ -50,7 +45,7 @@ public class Example05Controller {
 	
 	@GetMapping("/index")
 	public RedirectView redirect() {
-		return new RedirectView("/example05/post/string");
+		return new RedirectView("/example05/mav");
 	}
 	
 	
@@ -79,7 +74,7 @@ public class Example05Controller {
 		ModelAndView mav = new ModelAndView( ViewsConstant.EXAMPLE03 );
 		mav.addObject("person", this.objPerson );
 		mav.addObject("title", "Objecto complejos - MAV");
-		mav.addObject("list", this.listPerson);
+		mav.addObject("list", exampleService.getListPeople());
 		return mav;
 	}
 	
