@@ -1,7 +1,7 @@
 package com.udemy.backendninja.model;
 
 public class Person {
-
+	
 	private String name;
 	private String surname;
 	private int age;

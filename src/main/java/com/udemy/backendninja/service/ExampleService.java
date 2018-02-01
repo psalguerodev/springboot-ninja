@@ -8,4 +8,7 @@ public interface ExampleService {
 	
 	public abstract List<Person> getListPeople();
 	
+	public abstract Person addPerson(Person p);
+	
+	public abstract void deletePerson( String name );
 }

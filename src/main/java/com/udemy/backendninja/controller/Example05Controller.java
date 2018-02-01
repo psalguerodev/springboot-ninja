@@ -59,12 +59,14 @@ public class Example05Controller {
 	
 	/* ======================[ RETURN OBJECT MODEL AND VIEW ]====================== */
 	@PostMapping("/post/addPerson")
-	public ModelAndView requestMavPost(@ModelAttribute("person") Person person ) {
-		ModelAndView mav = new ModelAndView(ViewsConstant.EXAMPLE05);
-		mav.addObject("person",person);
-		int a = 5 / 0;
-		mav.addObject("result", "Se ha recibo la información");
-		return mav;
+	public String requestMavPost(@ModelAttribute("person") Person person ) {
+//		ModelAndView mav = new ModelAndView(ViewsConstant.EXAMPLE05);
+//		mav.addObject("person",person);
+//		int a = 5 / 0;
+//		
+//		mav.addObject("result", "Se ha recibo la información");
+		this.exampleService.addPerson( person );
+		return "redirect:/example05/mav";
 	}
 	
 	/* ======================[ RETURN OBJECT MODEL AND VIEW ]====================== */
