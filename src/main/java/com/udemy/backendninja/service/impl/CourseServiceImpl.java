@@ -4,11 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import com.udemy.backendninja.entity.Course;
 import com.udemy.backendninja.repository.CourseJpaRepository;
 import com.udemy.backendninja.service.CourseService;
 
+@Service("courseServiceImpl")
 public class CourseServiceImpl  implements CourseService{
 
 	@Autowired
