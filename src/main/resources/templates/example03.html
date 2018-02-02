@@ -40,7 +40,7 @@
 							<h5 class="">Listado de Personas</h5>
 						</div>
 						
-						<ul class="list-group list-group-flush" th:each="p : ${ list }">
+						<ul class="list-group list-group-flush" th:each="p : ${list}">
 						    <li class="list-group-item">
 						    	Nombre : <span th:text="${p.name}"></span> <br />
 						    	Apellido: <span th:text="${p.surname}"></span> <br />

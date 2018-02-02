@@ -1,11 +1,14 @@
 package com.udemy.backendninja.controller;
 
+import javax.validation.Valid;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -57,16 +60,16 @@ public class Example05Controller {
 		return ViewsConstant.EXAMPLE05;
 	}
 	
-	/* ======================[ RETURN OBJECT MODEL AND VIEW ]====================== */
+	/* ======================[ RETURN STRING VIEW ]================================ */
 	@PostMapping("/post/addPerson")
-	public String requestMavPost(@ModelAttribute("person") Person person ) {
-//		ModelAndView mav = new ModelAndView(ViewsConstant.EXAMPLE05);
-//		mav.addObject("person",person);
-//		int a = 5 / 0;
-//		
-//		mav.addObject("result", "Se ha recibo la información");
-		this.exampleService.addPerson( person );
-		return "redirect:/example05/mav";
+	public String requestMavPost(@Valid @ModelAttribute("person") Person person, BindingResult binding ) {
+		if( !binding.hasErrors() ) {
+			this.exampleService.addPerson( person );
+			return "redirect:/example05/mav";
+		}else {
+			binding.getAllErrors().stream().forEach(m -> LOGGER.error("Error: " + m.getDefaultMessage()) );
+			return ViewsConstant.EXAMPLE05;
+		}
 	}
 	
 	/* ======================[ RETURN OBJECT MODEL AND VIEW ]====================== */

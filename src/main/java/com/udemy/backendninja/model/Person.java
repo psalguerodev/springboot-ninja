@@ -1,9 +1,20 @@
 package com.udemy.backendninja.model;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Person {
 	
+	@NotNull
+	@Size(min=2,max=10)
 	private String name;
+	
+	@NotNull
+	@Size(min=2,max=20)
 	private String surname;
+	
+	@Min(18)
 	private int age;
 	
 	public Person() { }
