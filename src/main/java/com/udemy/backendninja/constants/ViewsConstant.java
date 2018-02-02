@@ -11,7 +11,7 @@ public class ViewsConstant {
 	public static String SERVER_INTERNAL_ERROR = "error/500";
 	
 	//Views of course
-	public static String COURSE_LIST = "courses";
-	public static String COURSE_FORM = "";
+	public static String COURSE_LIST = "courseList";
+	public static String COURSE_FORM = "courseForm";
 	
 }

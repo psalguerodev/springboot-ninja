@@ -28,7 +28,9 @@ public class RequestTimeInterceptor extends HandlerInterceptorAdapter{
 		// TODO Auto-generated method stub
 		long starTime = (long) request.getAttribute("startTime");
 		LOGGER.info("REQUEST URL: " + request.getRequestURL().toString());
-		LOGGER.info("REUQEST TIME : " + (System.currentTimeMillis() - starTime) + " ms." );
+		LOGGER.info("REQUEST TIME : " + (System.currentTimeMillis() - starTime) + " ms." );
+		LOGGER.info("REQUEST ADDRESS: " + request.getRemoteAddr()  );
+		LOGGER.info("REQUEST HOST: " + request.getRemoteHost() );
 	}
 	
 }
